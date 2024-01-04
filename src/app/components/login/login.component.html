@@ -1,0 +1,23 @@
+<div class="login-container">
+    <div class="wrapper">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+            <h3>Login</h3>
+
+            <mat-form-field>
+                <mat-label>Username:</mat-label>
+                <input matNativeControl formControlName="username">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            
+            <p *ngIf="hasError" style="color: red;">Username or Password Invalid!</p>
+
+            <button type="submit" mat-raised-button color="primary">Submit</button>
+        </form>
+        <button type="button" (click)="navigate()">navigate</button>
+    </div>
+</div>

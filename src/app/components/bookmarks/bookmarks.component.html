@@ -1,0 +1,17 @@
+<div class="bookmarks-container">
+    <div class="route-container">
+        <a routerLink="/search">Search Page</a>
+    </div>
+    
+    <ul [@listAnimation]="bookmarks.length">
+        <li *ngFor="let bookmark of bookmarks">
+            <mat-card>
+                <mat-card-content>
+                    <mat-icon class="delete-btn" (click)="onRemoveBookmark(bookmark)">delete</mat-icon>
+                    <img src="{{bookmark.avatar}}" />
+                </mat-card-content>
+                <mat-card-actions>{{bookmark.name}}</mat-card-actions>
+            </mat-card>
+        </li>
+    </ul>
+</div>

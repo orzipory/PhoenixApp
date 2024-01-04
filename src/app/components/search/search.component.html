@@ -1,0 +1,33 @@
+<div class="search-container">
+    <div class="route-container">
+        <a routerLink="/bookmarks">Bookmarks</a>
+    </div>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Repository Name:</mat-label>
+            <input matInput type="text" formControlName="repositoryName">
+        </mat-form-field>
+        <button mat-fab color="primary" (click)="onSearchClick()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
+
+    <div *ngIf="isLoading" class="sppiner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <ul [@listAnimation]="repositories.length">
+        <li *ngFor="let repository of repositories">
+            <mat-card>
+                <mat-card-content>
+                    <mat-icon
+                        class="bookmark-btn"
+                        [ngStyle]="{ color: repository.isBookmark ? 'gold' : 'silver' }"
+                        (click)="onBookmark(repository)">star</mat-icon>
+                    <img src="{{repository.avatar}}" />
+                </mat-card-content>
+                <mat-card-actions>{{repository.name}}</mat-card-actions>
+            </mat-card>
+        </li>
+    </ul>
+</div>
