@@ -30,11 +30,15 @@ export class StorageService {
     return localStorage.getItem("token")? true : false;
   }
 
-  public getToken() {
-    localStorage.removeItem("token");
+  public getToken(): any {
+    return localStorage.getItem("token");
   }
 
   public setToken(token: string): void {
     localStorage.setItem("token", token);
+  }
+
+  public removeToken(): void {
+    localStorage.removeItem("token");
   }
 }

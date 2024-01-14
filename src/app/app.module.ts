@@ -16,7 +16,8 @@ import { SearchComponent } from './components/search/search.component';
 import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 
 import { MaterialModule } from './shared/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonInterceptor } from './interceptors/common.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [ 
   	AuthService,
-  	AuthGuard
+  	AuthGuard,
+    { provide: HTTP_INTERCEPTORS , useClass: CommonInterceptor , multi: true }
   ],
   bootstrap: [AppComponent]
 })

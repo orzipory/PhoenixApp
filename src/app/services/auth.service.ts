@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   
   //#region declerations
-  public loggenIn$ = new BehaviorSubject(false);
+  private _loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public loggenIn$: Observable<boolean> = this._loggedIn.asObservable();
   //#endregion
 
   constructor() { 
@@ -31,7 +32,11 @@ export class AuthService {
   }
 
   public setLoggedIn(value: boolean){
-  	//update loggedin status in loggedIn$ stream. 
-  	this.loggenIn$.next(value);
+  	//update loggedin status in _loggedIn stream. 
+  	this._loggedIn.next(value);
+  }
+
+  public isLoggedIn(): boolean {
+    return this._loggedIn.value;
   }
 }

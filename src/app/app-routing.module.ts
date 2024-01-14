@@ -8,11 +8,11 @@ import { SearchComponent } from './components/search/search.component';
 import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 
 const routes: Routes = [
-  { path: '' , redirectTo: 'search' , pathMatch: 'full' },
+  { path: '' , redirectTo: 'login' , pathMatch: 'full' },
   { path: 'login' , component: LoginComponent },
   { path: 'search' , component: SearchComponent , canActivate:[AuthGuard] },
   { path: 'bookmarks' , component: BookmarksComponent , canActivate:[AuthGuard] },
-  { path: '**' , redirectTo: 'search' , pathMatch: 'full' }
+  { path: '**' , redirectTo: 'login' , pathMatch: 'full' }
 ];
 
 @NgModule({

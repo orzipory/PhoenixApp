@@ -14,10 +14,10 @@ export class RepositoryService {
   //#endregion
 
   constructor(private http: HttpClient) {
-    this.api = environment + "Repository/"
+    this.api = environment.apiUrl + "Repository/"
   }
 
   getRepositoryByName(name: string): Observable<IRepository[]> {
-    return this.http.get<IRepository[]>(this.api + "getRepositoryByName?text=" + name);
+    return this.http.get<IRepository[]>(this.api + "GetRepositoryByName?text=" + name);
   }
 }
